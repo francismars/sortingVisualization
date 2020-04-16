@@ -111,7 +111,6 @@ function changeAlgorithm(){
 function setup() {
 	createCanvas(WIDTH, HEIGHT);
 	initializeList()
-	frameRate(10)
 	
 	sel = createSelect();
 	sel.position(WIDTH+ 10, 10);
