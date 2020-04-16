@@ -101,7 +101,7 @@ function changeAlgorithm(){
 		volley = 1
 		smaller = 0
 		algorithm="SelectionSort"
-		explanation.html(SELECTIONSORT)
+		explanationDiv.html(SELECTIONSORT)
 		initializeList()
 		
 	}
@@ -110,7 +110,7 @@ function changeAlgorithm(){
 		volley = 0
 		smaller = -1
 		algorithm="BubbleSort"
-		explanation.html(BUBBLESORT)
+		explanationDiv.html(BUBBLESORT)
 		initializeList()				
 	}	
 	if (choice=='Insertion Sort'){
@@ -118,7 +118,7 @@ function changeAlgorithm(){
 		volley = 1
 		smaller = -1
 		algorithm="InsertionSort"
-		explanation.html(INSERTIONSORT)
+		explanationDiv.html(INSERTIONSORT)
 		initializeList()				
 	}
 }
@@ -128,15 +128,20 @@ function setup() {
 	initializeList()
 	
 	sel = createSelect();
-	sel.position(WIDTH + 150, 10);
+	sel.position(WIDTH + 100, 50);
 	sel.option('Selection Sort');
 	sel.option('Bubble Sort');
 	sel.option('Insertion Sort');
 	sel.changed(changeAlgorithm);
 	
-	explanation = createDiv('').size(400, 100);
-	explanation.position(WIDTH + 30, 30);
-	explanation.html(SELECTIONSORT)
+	button = createButton('Restart');
+	button.position(WIDTH + 225, 50);
+	button.mousePressed(changeAlgorithm);
+	
+	explanationDiv = createDiv('').size(400);
+	explanationDiv.style('background-color', color(25, 23, 200, 50));
+	explanationDiv.position(WIDTH + 30, 100);
+	explanationDiv.html(SELECTIONSORT)
 	
 }
 
