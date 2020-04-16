@@ -101,7 +101,7 @@ function changeAlgorithm(){
 		volley = 1
 		smaller = 0
 		algorithm="SelectionSort"
-		explanationDiv.html(SELECTIONSORT)
+		textExplanation.html(SELECTIONSORT)
 		initializeList()
 		
 	}
@@ -110,7 +110,7 @@ function changeAlgorithm(){
 		volley = 0
 		smaller = -1
 		algorithm="BubbleSort"
-		explanationDiv.html(BUBBLESORT)
+		textExplanation.html(BUBBLESORT)
 		initializeList()				
 	}	
 	if (choice=='Insertion Sort'){
@@ -118,7 +118,7 @@ function changeAlgorithm(){
 		volley = 1
 		smaller = -1
 		algorithm="InsertionSort"
-		explanationDiv.html(INSERTIONSORT)
+		textExplanation.html(INSERTIONSORT)
 		initializeList()				
 	}
 }
@@ -126,23 +126,34 @@ function changeAlgorithm(){
 function setup() {
 	createCanvas(WIDTH, HEIGHT);
 	initializeList()
+
+	explanationDiv = createDiv('').size(400);
+	explanationDiv.style('background-color', color(25, 23, 200, 25));
+	explanationDiv.style('padding-right', '20px');	
+	explanationDiv.style('padding-top', '20px');	
+	explanationDiv.style('padding-bottom', '20px');	
+	explanationDiv.position(WIDTH + 30, 50);	
+	
+	buttonsDiv = createDiv('').size(400);
+	buttonsDiv.style('text-align', 'center');
+	buttonsDiv.parent(explanationDiv)
+	buttonsDiv.style('padding-bottom', '10px');
+	buttonsDiv.style('padding-top', '10px');
 	
 	sel = createSelect();
-	sel.position(WIDTH + 100, 50);
 	sel.option('Selection Sort');
 	sel.option('Bubble Sort');
 	sel.option('Insertion Sort');
 	sel.changed(changeAlgorithm);
+	sel.parent(buttonsDiv)
 	
 	button = createButton('Restart');
-	button.position(WIDTH + 225, 50);
 	button.mousePressed(changeAlgorithm);
+	button.parent(buttonsDiv)
 	
-	explanationDiv = createDiv('').size(400);
-	explanationDiv.style('background-color', color(25, 23, 200, 50));
-	explanationDiv.position(WIDTH + 30, 100);
-	explanationDiv.html(SELECTIONSORT)
-	
+	textExplanation = createP()
+	textExplanation.parent(explanationDiv)
+	textExplanation.html(SELECTIONSORT)		
 }
 
 function draw() {
